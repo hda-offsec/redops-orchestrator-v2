@@ -1,0 +1,8 @@
+recursive-include api *.json *.yaml *.yml *.xml *.txt *.j2 *.html
+recursive-include apps *.json *.yaml *.yml *.xml *.txt *.j2
+recursive-include core *.json *.yaml *.yml *.txt
+exclude data/*
+exclude infra/*
+exclude migrations/*
+exclude tests/*
+exclude webui/*
