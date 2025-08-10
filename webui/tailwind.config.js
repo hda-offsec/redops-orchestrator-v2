@@ -1,19 +1,12 @@
-/** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{vue,js,ts}'],
   darkMode: 'class',
+  content: ["./index.html","./src/**/*.{vue,js,ts}"] ,
   theme: {
     extend: {
       colors: {
-        redops: {
-          bg: '#0b0f14',
-          card: '#121821',
-          accent: '#ff4444',
-          ok: '#00ff99',
-          warn: '#ffcc00'
-        }
+        brand: {50:'#ecfeff',100:'#cffafe',200:'#a5f3fc',300:'#67e8f9',400:'#22d3ee',500:'#06b6d4',600:'#0891b2',700:'#0e7490',800:'#155e75',900:'#164e63',950:'#083344'}
       }
     }
   },
-  plugins: [require('@tailwindcss/forms')]
+  plugins: []
 }

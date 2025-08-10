@@ -10,3 +10,5 @@ htmlcov/
 .mypy_cache/
 .pytest_cache/
 
+webui/node_modules/
+webui/dist/
