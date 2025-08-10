@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{ --ring: #f43f5e; }
+a { @apply text-redops-accent hover:underline; }
