@@ -5,6 +5,8 @@ from slowapi.errors import RateLimitExceeded
 from slowapi.middleware import SlowAPIMiddleware
 from slowapi.util import get_remote_address
 from starlette.responses import JSONResponse
+import os
+from starlette.staticfiles import StaticFiles
 
 from api.routers import dirbusting, knowledge, lfi, nmap, orchestrator, vuln, waf, webrecon
 from core.auth import api_key
@@ -19,6 +21,7 @@ app.add_middleware(SlowAPIMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
 )
@@ -36,3 +39,8 @@ async def health():
     return {"status": "ok"}
 
 instrumentator.instrument(app).expose(app)
+
+# --- Static UI (optionnel) ---
+dist_path = os.path.join(os.path.dirname(__file__), "..", "webui", "dist")
+if os.path.isdir(dist_path):
+    app.mount("/ui", StaticFiles(directory=dist_path, html=True), name="ui")
