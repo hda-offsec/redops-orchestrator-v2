@@ -11,16 +11,19 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.2.0",
-    "axios": "^1.7.7",
-    "vue": "^3.4.38",
+    "axios": "^1.11.0",
+    "pinia": "^2.2.6",
+    "socket.io-client": "^4.8.1",
+    "vue": "^3.5.18",
     "vue-router": "^4.4.5"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.9",
     "@vitejs/plugin-vue": "^6.0.1",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.13",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.9.2",
-    "vite": "^5.4.8"
+    "vite": "^5.4.19"
   }
 }
