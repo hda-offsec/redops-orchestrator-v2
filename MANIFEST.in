@@ -1,8 +1,61 @@
-recursive-include api *.json *.yaml *.yml *.xml *.txt *.j2 *.html
-recursive-include apps *.json *.yaml *.yml *.xml *.txt *.j2
-recursive-include core *.json *.yaml *.yml *.txt
-exclude data/*
-exclude infra/*
-exclude migrations/*
-exclude tests/*
-exclude webui/*
+# --------- Docs & licence
+include README.md
+include AGENTS.md
+include LICENSE
+global-include *.md *.txt
+
+# --------- Code (packages) — utile si tu fais des sdists
+recursive-include api *.py
+recursive-include apps *.py
+recursive-include core *.py
+
+# --------- Données nécessaires au runtime (profils, knowledge, templates, wordlists)
+# data/
+recursive-include data/profiles *.json *.yaml *.yml *.txt
+recursive-include data/knowledge *.json *.yaml *.yml *.md
+recursive-include data/wordlists *.txt *.lst *.dic
+
+# webui/ et éventuels templates côté API
+recursive-include webui *.html *.jinja *.jinja2 *.css *.js *.svg *.png *.jpg *.ico *.json
+recursive-include api/templates *.html *.jinja *.jinja2 *.css *.js
+recursive-include api/static *.css *.js *.svg *.png *.jpg *.ico
+
+# apps/ — ressources non .py des modules (profils, signatures, mapping, etc.)
+recursive-include apps/nmap *.json *.yaml *.yml *.txt *.xml
+recursive-include apps/webrecon *.json *.yaml *.yml *.txt
+recursive-include apps/vuln *.json *.yaml *.yml *.txt
+recursive-include apps/dirbusting *.json *.yaml *.yml *.txt
+recursive-include apps/lfi *.json *.yaml *.yml *.txt
+recursive-include apps/waf *.json *.yaml *.yml *.txt
+recursive-include apps/orchestrator *.json *.yaml *.yml *.txt
+
+# core/ — modèles/exports/templates
+recursive-include core *.json *.yaml *.yml *.txt *.html *.css
+
+# --------- Infra / CI / scripts
+include Makefile
+recursive-include bin *.sh *.py
+recursive-include infra *.yml *.yaml *.json *.ini *.cfg *.conf *.sh
+include infra/docker-compose.yml
+include infra/prometheus.yml
+
+# --------- Tests (si tu veux les embarquer dans la sdist)
+recursive-include tests *.py *.json *.yaml *.yml
+
+# --------- Exclusions (artefacts, runtime, venv, cache, résultats)
+prune .git
+prune .github
+prune .ruff_cache
+prune .mypy_cache
+prune .pytest_cache
+prune __pycache__
+prune venv
+prune .venv
+prune dist
+prune build
+prune data/run
+prune data/results
+prune data/snapshots
+
+# --------- Globaux à exclure
+global-exclude *.pyc *.pyo *.pyd *.so *.dylib *.swp *.DS_Store
