@@ -1,6 +1,8 @@
-<template><RouterView /></template>
-<script setup lang="ts">
-if (!document.documentElement.classList.contains('dark')) {
-  document.documentElement.classList.add('dark')
-}
+<template>
+  <Toast/>
+  <AppShell><router-view /></AppShell>
+</template>
+<script setup>
+import AppShell from '@/layouts/AppShell.vue'
+import Toast from '@/components/ui/Toast.vue'
 </script>
