@@ -1,4 +1,5 @@
-from core.sanitize import validate_target, sanitize_nmap_options
+from core.sanitize import sanitize_nmap_options, validate_target
+
 
 def test_validate_target():
     assert validate_target('127.0.0.1')

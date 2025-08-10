@@ -1,4 +1,5 @@
-from core.diff import summarize_hosts, compute_diff
+from core.diff import compute_diff, summarize_hosts
+
 
 def test_diff():
     prev = summarize_hosts({'hosts': []})

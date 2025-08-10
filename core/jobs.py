@@ -1,5 +1,6 @@
-from rq import Queue, Worker
 from redis import Redis
+from rq import Queue, Worker
+
 from core.config import settings
 
 redis_conn = Redis.from_url(settings.redis_url)

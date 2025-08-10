@@ -1,7 +1,9 @@
 from pathlib import Path
+
 from core.logging import logger
-from core.sanitize import validate_target, sanitize_nmap_options
+from core.sanitize import sanitize_nmap_options, validate_target
 from core.shell import run
+
 from .parser import parse
 from .profiles import PROFILES
 

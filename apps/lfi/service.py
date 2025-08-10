@@ -1,5 +1,5 @@
 from core.logging import logger
-from .profiles import PROFILES
+
 from .detection import detect
 
 

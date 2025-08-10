@@ -1,8 +1,7 @@
 import typer
-from api.main import app
-from core.jobs import run_worker
-from core.config import settings
 import uvicorn
+
+from core.jobs import run_worker
 
 cli = typer.Typer()
 
@@ -23,6 +22,15 @@ def profiles(module: str):
 @cli.command()
 def health():
     typer.echo("ok")
+
+
+@cli.command()
+def once(module: str, target: str, profile: str = "normal"):
+    from importlib import import_module
+
+    svc = import_module(f"apps.{module}.service")
+    res = svc.run_scan(target=target, profile=profile, options=[])
+    typer.echo(res)
 
 if __name__ == "__main__":
     cli()

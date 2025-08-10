@@ -1,6 +1,7 @@
-from fastapi import APIRouter
-from pathlib import Path
 import json
+from pathlib import Path
+
+from fastapi import APIRouter
 
 router = APIRouter(prefix="/knowledge", tags=["knowledge"])
 

@@ -1,5 +1,6 @@
 from pydantic_settings import BaseSettings
 
+
 class Settings(BaseSettings):
     api_token: str = "changeme"
     oscp_mode: bool = True

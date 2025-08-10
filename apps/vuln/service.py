@@ -1,5 +1,5 @@
 from core.logging import logger
-from .profiles import PROFILES
+
 from .enrich_searchsploit import enrich
 from .mitre_map import MITRE
 

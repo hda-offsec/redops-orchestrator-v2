@@ -1,7 +1,9 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
+
+from apps.lfi.profiles import PROFILES
+from apps.lfi.service import run_scan
 from core.jobs import enqueue, get_job
-from apps.lfi.service import run_scan, PROFILES
 
 router = APIRouter(prefix="/lfi", tags=["lfi"])
 

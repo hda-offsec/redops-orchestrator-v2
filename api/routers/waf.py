@@ -1,7 +1,8 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
+
+from apps.waf.service import PROFILES, run_scan
 from core.jobs import enqueue, get_job
-from apps.waf.service import run_scan, PROFILES
 
 router = APIRouter(prefix="/waf", tags=["waf"])
 

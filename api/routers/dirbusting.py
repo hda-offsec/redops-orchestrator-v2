@@ -1,7 +1,9 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
+
+from apps.dirbusting.profiles import PROFILES
+from apps.dirbusting.service import run_scan
 from core.jobs import enqueue, get_job
-from apps.dirbusting.service import run_scan, PROFILES
 
 router = APIRouter(prefix="/dirbusting", tags=["dirbusting"])
 

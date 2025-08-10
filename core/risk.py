@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List
 
 CRITICAL_PORTS = {22, 80, 443, 3389}
 

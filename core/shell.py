@@ -1,6 +1,5 @@
-import subprocess
-import shlex
 import resource
+import subprocess
 from pathlib import Path
 from typing import Sequence
 

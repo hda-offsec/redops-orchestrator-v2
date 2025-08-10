@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from typing import Dict, Any
+from typing import Any, Dict
 
 
 def parse(xml_str: str) -> Dict[str, Any]:

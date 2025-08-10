@@ -1,5 +1,6 @@
+from typing import Any, Dict
+
 from core.logging import logger
-from typing import Dict, Any
 
 PROFILES: Dict[str, Dict[str, Any]] = {"default": {}}
 

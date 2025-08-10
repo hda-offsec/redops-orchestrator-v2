@@ -1,7 +1,9 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
+
+from apps.vuln.profiles import PROFILES
+from apps.vuln.service import run_scan
 from core.jobs import enqueue, get_job
-from apps.vuln.service import run_scan, PROFILES
 
 router = APIRouter(prefix="/vuln", tags=["vuln"])
 
