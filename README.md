@@ -14,26 +14,39 @@ python run.py worker --queue nmap
 curl -H "X-RedOps-Token: changeme" http://127.0.0.1:5000/health
 ```
 
-## UI Development
+## Web UI
 
+Vue 3 interface built with Vite and Tailwind.
+
+### Development
 ```bash
 cd webui
-cp .env.example .env
 npm install
 npm run dev
 # open http://127.0.0.1:5173
 ```
+Environment variables:
+- `VITE_API_BASE` (default `http://127.0.0.1:5000`)
+- `VITE_DEFAULT_TOKEN` (default `changeme`)
 
-## Build & Serve via FastAPI
-
+### Build & Serve via FastAPI
 ```bash
 cd webui && npm run build
 # restart the API; UI served at http://127.0.0.1:5000/ui
 ```
 
-## Usage
+### Manual test plan
+1. Start backend workers and API:
+   ```bash
+   python run.py worker nmap
+   python run.py api --host 0.0.0.0 --port 5000
+   ```
+2. In another terminal run `npm run dev` and browse to `http://127.0.0.1:5173`.
+3. Submit an Nmap scan (`scanme.nmap.org`, profile `normal`) and observe toasts and results.
+4. Build the UI (`npm run build`) and access it via `http://127.0.0.1:5000/ui`.
 
-```bash
+## Usage
+```
 # run worker for nmap queue
 python run.py worker nmap
 # start API
