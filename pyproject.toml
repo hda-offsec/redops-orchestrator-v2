@@ -2,7 +2,8 @@
 name = "redops-orchestrator-v2"
 version = "0.1.0"
 description = "RedOps API-first orchestrator"
-authors = [{name="RedOps"}]
+readme = "README.md"
+authors = [{ name = "RedOps" }]
 requires-python = ">=3.12"
 dependencies = [
   "fastapi",
@@ -39,11 +40,30 @@ dev = [
 ]
 
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
+
+# --- setuptools: découverte des paquets en layout plat ---
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["api*", "apps*", "core*"]
+exclude = ["data*", "infra*", "migrations*", "tests*", "webui*", "docs*", "scripts*"]
+
+# (facultatif) embarquer du data (profils, templates, etc.)
+[tool.setuptools.package-data]
+"api" = ["**/*.json", "**/*.yaml", "**/*.yml", "**/*.xml", "**/*.txt", "**/*.j2", "**/*.html"]
+"apps" = ["**/*.json", "**/*.yaml", "**/*.yml", "**/*.xml", "**/*.txt", "**/*.j2"]
+"core" = ["**/*.json", "**/*.yaml", "**/*.yml", "**/*.txt"]
 
 [tool.pytest.ini_options]
 addopts = "-q"
 pythonpath = ["."]
 testpaths = ["tests"]
 
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
