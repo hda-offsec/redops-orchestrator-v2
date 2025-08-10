@@ -43,13 +43,15 @@ dev = [
 requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
-# --- setuptools: découverte des paquets en layout plat ---
+# NEW
+[tool.setuptools]
+include-package-data = true
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["api*", "apps*", "core*"]
 exclude = ["data*", "infra*", "migrations*", "tests*", "webui*", "docs*", "scripts*"]
 
-# (facultatif) embarquer du data (profils, templates, etc.)
 [tool.setuptools.package-data]
 "api" = ["**/*.json", "**/*.yaml", "**/*.yml", "**/*.xml", "**/*.txt", "**/*.j2", "**/*.html"]
 "apps" = ["**/*.json", "**/*.yaml", "**/*.yml", "**/*.xml", "**/*.txt", "**/*.j2"]
