@@ -1,0 +1,28 @@
+version: '3'
+services:
+  api:
+    build: .
+    command: ["python", "run.py", "api"]
+    ports: ["5000:5000"]
+    environment:
+      - REDOPS_REDIS_URL=redis://redis:6379/0
+      - REDOPS_DB_URL=sqlite:///data/redops.db
+    depends_on: [redis]
+  worker:
+    build: .
+    command: ["python", "run.py", "worker", "--queue", "nmap"]
+    environment:
+      - REDOPS_REDIS_URL=redis://redis:6379/0
+      - REDOPS_DB_URL=sqlite:///data/redops.db
+    depends_on: [redis]
+  redis:
+    image: redis:7-alpine
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_PASSWORD: example
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports: ["9090:9090"]

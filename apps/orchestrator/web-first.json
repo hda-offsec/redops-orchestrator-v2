@@ -1,0 +1,12 @@
+{
+  "name": "web-first",
+  "oscp_mode": true,
+  "steps": [
+    {"module":"nmap","params":{"profile":"web_recon"}},
+    {"module":"webrecon","when":"ports.http_or_https"},
+    {"module":"vuln","params":{"profile":"web"},"when":"webrecon.probable_webapp"},
+    {"module":"dirbusting","when":"ports.http_or_https"},
+    {"module":"lfi","when":"webrecon.probable_php"},
+    {"module":"knowledge"}
+  ]
+}

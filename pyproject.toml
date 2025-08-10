@@ -1,0 +1,37 @@
+[project]
+name = "redops-orchestrator-v2"
+version = "0.1.0"
+description = "RedOps API-first orchestrator"
+authors = [{name="RedOps"}]
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "pydantic>=2",
+  "redis",
+  "rq",
+  "sqlalchemy>=2",
+  "alembic",
+  "httpx",
+  "structlog",
+  "prometheus-fastapi-instrumentator",
+  "prometheus-client",
+  "slowapi",
+  "weasyprint",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "coverage",
+  "ruff",
+  "mypy",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+
